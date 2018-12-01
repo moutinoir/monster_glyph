@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class monster_carreau : MonoBehaviour {
+public class MonsterCarreau : MonoBehaviour {
 
-    public Animator anim;
+    private Animator anim;
 
 	// Use this for initialization
 	void Start () {
