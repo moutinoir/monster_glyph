@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class TempleManager : MonoBehaviour
 {
-    [Header("Timeline Percentage")]
+    [Header("Timeline")]
     public float timelinePercentage = 0;
 
-    [Header("Current Temple")]
-    public TempleRoot currentTemple;
+    TempleRoot currentTemple;
 
     private void Update()
     {
         if(currentTemple != null)
         {
             currentTemple.SetPosition(timelinePercentage);
+        }
+        else
+        {
+            currentTemple = FindObjectOfType<TempleRoot>();
         }
     }
 }

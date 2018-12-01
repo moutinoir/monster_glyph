@@ -18,7 +18,7 @@ public class TempleRoot : MonoBehaviour
     /// <param name="percentage">from 0 to 1</param>
     public void SetPosition(float percentage)
     {
-        position = startPositionAndDirection.position + length * percentage * startPositionAndDirection.forward;
+        position = startPositionAndDirection.position + length * percentage * -startPositionAndDirection.forward;
         transform.position = position;
     }
 }

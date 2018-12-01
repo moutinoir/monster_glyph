@@ -482,7 +482,9 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: 114065843401464004, guid: 67542865d3505204a94cd0608db02735, type: 2}
+    value: {fileID: 2024888677}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1646100967
@@ -507,6 +509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2024888675}
   - component: {fileID: 2024888676}
+  - component: {fileID: 2024888677}
   m_Layer: 0
   m_Name: TempleManager
   m_TagString: Untagged
@@ -539,7 +542,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timelinePercentage: 0
-  currentTemple: {fileID: 0}
+--- !u!95 &2024888677
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2024888674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2094055928
 GameObject:
   m_ObjectHideFlags: 0
