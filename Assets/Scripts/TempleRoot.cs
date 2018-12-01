@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class TempleRoot : MonoBehaviour
 {
-    [Header("Temple Dimensions")]
-    public float length = 20;
+    float length;
 
-    [Header("Position and Direction")]
+    [Header("Reference Points")]
     public Transform startPositionAndDirection;
+    public Transform endPosition;
+    public Transform glyphTablePositionAndDirection;
+
+    private void Awake()
+    {
+        length = Vector3.Dot((endPosition.position - startPositionAndDirection.position), startPositionAndDirection.forward);
+    }
 
     Vector3 position;
     /// <summary>
