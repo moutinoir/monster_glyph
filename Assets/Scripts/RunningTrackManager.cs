@@ -1,0 +1,37 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RunningTrackManager : MonoBehaviour
+{
+    [Header("Timeline")]
+    public float timelinePercentage = 0;
+
+    TempleRoot currentTemple;
+    Player player;
+    BlocksRoot currentBlocks;
+
+    private void Update()
+    {
+        if(currentBlocks != null && currentTemple != null && player != null)
+        {
+            player.SetPosition(currentTemple.ComputePlayerPosition(timelinePercentage));
+            currentBlocks.SetPosition(currentBlocks.ComputeBlocksPosition(timelinePercentage));
+        }
+
+        if (currentBlocks == null)
+        {
+            currentBlocks = FindObjectOfType<BlocksRoot>();
+        }
+
+        if (currentTemple == null)
+        {
+            currentTemple = FindObjectOfType<TempleRoot>();
+        }
+
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>();
+        }
+    }
+}

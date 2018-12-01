@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Loader.unity
+    guid: 1ed64f113b0dcac45af00341ba485a2a
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1_Geometry.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/CoreScenes/GameOver_Trappe.unity
+    guid: 209f677f4de3fb24e9d5bb75c3dbc906
+  - enabled: 1
+    path: Assets/Scenes/CoreScenes/GlyphTable.unity
+    guid: 8fc3d8835fb342041877b681d19a6d28
+  - enabled: 1
+    path: Assets/Scenes/CoreScenes/Player.unity
+    guid: 4455189156e6f324ba31b90f873835bd
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1_Blocks.unity
+    guid: ff0b040fe3265724db47e03aef9a28d5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1_Gameplay.unity
+    guid: 3296999ab73668a4398c87a75afef505
   m_configObjects: {}
