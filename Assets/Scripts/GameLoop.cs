@@ -8,6 +8,7 @@ public class GameLoop : MonoBehaviour
     public InputManager inputManager;
     public TimelineController timelineController;
     public HitManager hitManager;
+    public FallInHoleManager fallInHoleManager;
 
     delegate void StateAction();
 
