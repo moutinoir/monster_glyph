@@ -16,9 +16,9 @@ public class TempleRoot : MonoBehaviour
     /// percentage 1 : the temple moved all its length along its direction
     /// </summary>
     /// <param name="percentage">from 0 to 1</param>
-    public void SetPosition(float percentage)
+    public Vector3 SetPlayerPosition(float percentage)
     {
-        position = startPositionAndDirection.position + length * percentage * -startPositionAndDirection.forward;
-        transform.position = position;
+        position = startPositionAndDirection.position + length * percentage * startPositionAndDirection.forward;
+        return position;
     }
 }
