@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
             triggerRight = false;
         }
 
-        else if(Input.GetAxis("LeftControllerTrigger") > 0.9f && triggerLeft == false)
+        if(Input.GetAxis("LeftControllerTrigger") > 0.9f && triggerLeft == false)
         {
             triggerLeft = true;
             if (onTrigger != null)

@@ -43,6 +43,7 @@ public class GameLoop : MonoBehaviour
     
     void OnPreparationEnter()
     {
+        fallInHoleManager.DisplayFloorHideHole();
         inputManager.onTrigger += OnPreparationTrigger;
         Debug.Log("[GameLoop] : Enter Preparation");
     }
@@ -90,6 +91,7 @@ public class GameLoop : MonoBehaviour
     void OnFallInHoleEnter()
     {
         Debug.Log("[GameLoop] : Enter Fall In Hole");
+        fallInHoleManager.MoveHoleDisableFloor();
     }
 
     void OnFallInHoleUpdate()

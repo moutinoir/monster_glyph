@@ -143,6 +143,7 @@ MonoBehaviour:
   inputManager: {fileID: 854478460}
   timelineController: {fileID: 1646100968}
   hitManager: {fileID: 1223646308}
+  fallInHoleManager: {fileID: 1486509814}
   currentState: 100
   nextState: 0
 --- !u!4 &391270160
