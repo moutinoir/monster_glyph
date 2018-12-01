@@ -8,13 +8,5 @@ public class HitDetection : MonoBehaviour {
     {
         Debug.Log(objectHit);
     }
-
-	//void Start () {
-		
-	//}
-	
-	//void Update () {
-		
-	//}
-
+    
 }
