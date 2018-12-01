@@ -28,6 +28,7 @@ public class TimelineController : MonoBehaviour
     public void Update()
     {
         director.time += Time.deltaTime * timeScale;
+        director.Evaluate();
     }
 
     public void StopTimelineAndDeactivate()
