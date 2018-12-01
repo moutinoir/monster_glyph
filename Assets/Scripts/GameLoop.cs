@@ -36,6 +36,7 @@ public class GameLoop : MonoBehaviour
             {
                 new SGameState() {onEnter =  OnPreparationEnter, onUpdate = OnPreparationUpdate, onExit = OnPreparationExit},
                 new SGameState() {onEnter =  OnInTimelineEnter, onUpdate = OnInTimelineUpdate, onExit = OnInTimelineExit},
+                new SGameState() {onEnter =  OnFallInHoleEnter, onUpdate = OnFallInHoleUpdate, onExit = OnFallInHoleExit},
         };
     }
     
@@ -83,6 +84,21 @@ public class GameLoop : MonoBehaviour
     {
         timelineController.StopTimelineAndDeactivate();
         Debug.Log("[GameLoop] : Exit In Timeline");
+    }
+
+    void OnFallInHoleEnter()
+    {
+        Debug.Log("[GameLoop] : Enter Fall In Hole");
+    }
+
+    void OnFallInHoleUpdate()
+    {
+
+    }
+
+    void OnFallInHoleExit()
+    {
+        Debug.Log("[GameLoop] : Exit Fall In Hole");
     }
 
     private void Update()
