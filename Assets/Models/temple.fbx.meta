@@ -20,6 +20,13 @@ ModelImporter:
     100028: temple6
     100030: temple7
     100032: temple8
+    100034: columns2
+    100036: floor
+    100038: front
+    100040: pathway
+    100042: roof
+    100044: roof_elements
+    100046: temple1
     400000: Circle.001
     400002: column room 1
     400004: Plane.000
@@ -37,6 +44,13 @@ ModelImporter:
     400028: temple6
     400030: temple7
     400032: temple8
+    400034: columns2
+    400036: floor
+    400038: front
+    400040: pathway
+    400042: roof
+    400044: roof_elements
+    400046: temple1
     2100000: pathway
     2100002: walls
     2100004: bake
@@ -58,6 +72,13 @@ ModelImporter:
     2300026: temple6
     2300028: temple7
     2300030: temple8
+    2300032: columns2
+    2300034: floor
+    2300036: front
+    2300038: pathway
+    2300040: roof
+    2300042: roof_elements
+    2300044: temple1
     3300000: Circle.001
     3300002: column room 1
     3300004: Plane.000
@@ -74,6 +95,13 @@ ModelImporter:
     3300026: temple6
     3300028: temple7
     3300030: temple8
+    3300032: columns2
+    3300034: floor
+    3300036: front
+    3300038: pathway
+    3300040: roof
+    3300042: roof_elements
+    3300044: temple1
     4300000: Plane.002
     4300002: temple10
     4300004: roof_elements1.001
@@ -90,6 +118,14 @@ ModelImporter:
     4300026: Plane.007
     4300028: Plane.000
     4300030: Circle.001
+    4300032: pathway
+    4300034: roof_elements
+    4300036: temple1
+    4300038: front
+    4300040: floor
+    4300042: roof
+    4300044: columns2
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -154,7 +190,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -171,7 +207,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
+    tangentImportMode: 0
     normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
