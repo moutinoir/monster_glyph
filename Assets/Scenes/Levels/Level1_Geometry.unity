@@ -549,7 +549,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 578d5365d03572e46bb23ba7844298cf, type: 2}
     - target: {fileID: 400016, guid: 1226b3323bc725f4a923300ae7fdb2cc, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300002, guid: 1226b3323bc725f4a923300ae7fdb2cc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -587,12 +587,30 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100036, guid: 1226b3323bc725f4a923300ae7fdb2cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: 1226b3323bc725f4a923300ae7fdb2cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1226b3323bc725f4a923300ae7fdb2cc, type: 3}
   m_IsPrefabAsset: 0
 --- !u!4 &1022019344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400016, guid: 1226b3323bc725f4a923300ae7fdb2cc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1022019343}
+--- !u!1 &1022019345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100040, guid: 1226b3323bc725f4a923300ae7fdb2cc,
+    type: 3}
+  m_PrefabInternal: {fileID: 1022019343}
+--- !u!1 &1022019346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100036, guid: 1226b3323bc725f4a923300ae7fdb2cc,
     type: 3}
   m_PrefabInternal: {fileID: 1022019343}
 --- !u!1 &1076349558
@@ -617,7 +635,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1076349558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 91.14}
+  m_LocalPosition: {x: 0, y: 0, z: 97.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1416996059}
@@ -1449,3 +1467,6 @@ MonoBehaviour:
   startPositionAndDirection: {fileID: 1416996059}
   endPosition: {fileID: 1076349559}
   glyphTablePositionAndDirection: {fileID: 575071415}
+  grounds:
+  - {fileID: 1022019346}
+  - {fileID: 1022019345}

@@ -11,6 +11,9 @@ public class TempleRoot : MonoBehaviour
     public Transform endPosition;
     public Transform glyphTablePositionAndDirection;
 
+    [Header("Reference")]
+    public GameObject[] grounds;
+
     void InitLength()
     {
     //    length = Vector3.Dot((endPosition.position - startPositionAndDirection.position), startPositionAndDirection.forward);
@@ -31,5 +34,21 @@ public class TempleRoot : MonoBehaviour
     public Vector3 ComputePlayerPosition(float percentage)
     {
         return startPositionAndDirection.position + length * percentage * startPositionAndDirection.forward;
+    }
+
+    public void HideFloor()
+    {
+        for(int i = 0; i < grounds.Length; ++i)
+        {
+            grounds[i].SetActive(false);
+        }
+    }
+
+    public void ShowFloor()
+    {
+        for (int i = 0; i < grounds.Length; ++i)
+        {
+            grounds[i].SetActive(true);
+        }
     }
 }

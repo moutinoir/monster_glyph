@@ -8,6 +8,7 @@ public class GameLoop : MonoBehaviour
     public InputManager inputManager;
     public TimelineController timelineController;
     public HitManager hitManager;
+    public FallInHoleManager fallInHoleManager;
 
     delegate void StateAction();
 
@@ -42,6 +43,7 @@ public class GameLoop : MonoBehaviour
     
     void OnPreparationEnter()
     {
+        fallInHoleManager.DisplayFloorHideHole();
         inputManager.onTrigger += OnPreparationTrigger;
         Debug.Log("[GameLoop] : Enter Preparation");
     }
@@ -89,6 +91,7 @@ public class GameLoop : MonoBehaviour
     void OnFallInHoleEnter()
     {
         Debug.Log("[GameLoop] : Enter Fall In Hole");
+        fallInHoleManager.MoveHoleDisableFloor();
     }
 
     void OnFallInHoleUpdate()
