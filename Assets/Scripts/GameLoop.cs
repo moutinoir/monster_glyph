@@ -7,6 +7,7 @@ public class GameLoop : MonoBehaviour
     [Header("References")]
     public InputManager inputManager;
     public TimelineController timelineController;
+    public HitManager hitManager;
 
     delegate void StateAction();
 
@@ -22,6 +23,7 @@ public class GameLoop : MonoBehaviour
         None = 100,
         Preparation = 0,
         InTimeline = 1,
+        FallInHole = 2,
     }
 
     SGameState[] states;
@@ -62,14 +64,14 @@ public class GameLoop : MonoBehaviour
     void OnInTimelineEnter()
     {
         timelineController.StartTimelineAndActivate();
-        inputManager.onTrigger += OnInTimelineTrigger;
+        hitManager.onHit += OnInTimelineObstacleHit;
         Debug.Log("[GameLoop] : Enter In Timeline");
     }
 
-    void OnInTimelineTrigger()
+    void OnInTimelineObstacleHit()
     {
-        nextState = EGameState.Preparation;
-        inputManager.onTrigger -= OnInTimelineTrigger;
+        nextState = EGameState.FallInHole;
+        hitManager.onHit -= OnInTimelineObstacleHit;
     }
 
     void OnInTimelineUpdate()
