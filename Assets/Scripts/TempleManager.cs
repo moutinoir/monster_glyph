@@ -8,16 +8,23 @@ public class TempleManager : MonoBehaviour
     public float timelinePercentage = 0;
 
     TempleRoot currentTemple;
+    Player player;
 
     private void Update()
     {
-        if(currentTemple != null)
+        if(currentTemple != null && player != null)
         {
-            currentTemple.SetPosition(timelinePercentage);
+            player.SetPosition(currentTemple.SetPlayerPosition(timelinePercentage));
         }
-        else
+
+        if (currentTemple == null)
         {
             currentTemple = FindObjectOfType<TempleRoot>();
+        }
+
+        if(player == null)
+        {
+            player = FindObjectOfType<Player>();
         }
     }
 }
