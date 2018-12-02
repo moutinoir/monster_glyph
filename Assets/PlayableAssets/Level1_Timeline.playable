@@ -14,7 +14,7 @@ MonoBehaviour:
   m_NextId: 0
   m_Tracks:
   - {fileID: 114065843401464004}
-  m_FixedDuration: 120.21666666666667
+  m_FixedDuration: 40.06666666666667
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 1
@@ -42,15 +42,15 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: Infinity
-        outSlope: 0.008331019
+        outSlope: 0.024916943
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 120.03333
+        time: 40.133335
         value: 1
-        inSlope: 0.008331019
+        inSlope: 0.024916943
         outSlope: -0.0013555117
         tangentMode: 69
         weightedMode: 0
@@ -84,7 +84,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 120.03333
+    m_StopTime: 40.133335
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -107,15 +107,15 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: Infinity
-        outSlope: 0.008331019
+        outSlope: 0.024916943
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 120.03333
+        time: 40.133335
         value: 1
-        inSlope: 0.008331019
+        inSlope: 0.024916943
         outSlope: -0.0013555117
         tangentMode: 69
         weightedMode: 0

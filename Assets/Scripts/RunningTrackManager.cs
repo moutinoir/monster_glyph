@@ -11,6 +11,9 @@ public class RunningTrackManager : MonoBehaviour
     Player player;
     BlocksRoot currentBlocks;
 
+    public delegate void OnReachEnd();
+    public OnReachEnd onReachEnd;
+
     public void Reset()
     {
         timelinePercentage = 0;
@@ -28,6 +31,11 @@ public class RunningTrackManager : MonoBehaviour
         {
             player.SetPosition(currentTemple.ComputePlayerPosition(timelinePercentage));
             currentBlocks.SetPosition(currentBlocks.ComputeBlocksPosition(timelinePercentage));
+        }
+
+        if(timelinePercentage > 0.99f && onReachEnd != null)
+        {
+            onReachEnd();
         }
 
         if (currentBlocks == null)

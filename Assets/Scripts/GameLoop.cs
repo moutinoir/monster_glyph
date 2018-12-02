@@ -10,7 +10,10 @@ public class GameLoop : MonoBehaviour
     public HitManager hitManager;
     public FallInHoleManager fallInHoleManager;
     public RunningTrackManager runningTrackManager;
-    public AudioSource audio;
+    public AudioSource audioSource;
+    public GlyphTableManager glyphTableManager;
+
+    public bool invincible;
 
     delegate void StateAction();
 
@@ -28,6 +31,8 @@ public class GameLoop : MonoBehaviour
         InTimeline = 1,
         FallInHole = 2,
         GameOverBottom = 3,
+        GlyphTable = 4,
+        Congrats = 5,
     }
 
     SGameState[] states;
@@ -47,9 +52,9 @@ public class GameLoop : MonoBehaviour
     
     void OnPreparationEnter()
     {
-        if(audio.isPlaying)
+        if(audioSource.isPlaying)
         {
-            audio.Stop();
+            audioSource.Stop();
         }
         fallInHoleManager.DisplayFloorHideHole();
         inputManager.onTrigger += OnPreparationTrigger;
@@ -74,17 +79,30 @@ public class GameLoop : MonoBehaviour
 
     void OnInTimelineEnter()
     {
-        audio.Play();
+        audioSource.Play();
         runningTrackManager.gameObject.SetActive(true);
         timelineController.StartTimelineAndActivate();
         hitManager.onHit += OnInTimelineObstacleHit;
+        runningTrackManager.onReachEnd += OnInTimelineReachEnd;
         Debug.Log("[GameLoop] : Enter In Timeline");
     }
 
     void OnInTimelineObstacleHit()
     {
+        if (invincible)
+            return;
+
         runningTrackManager.gameObject.SetActive(false);
         nextState = EGameState.FallInHole;
+        hitManager.onHit -= OnInTimelineObstacleHit;
+        runningTrackManager.onReachEnd -= OnInTimelineReachEnd;
+    }
+
+    void OnInTimelineReachEnd()
+    {
+        nextState = EGameState.GlyphTable;
+
+        runningTrackManager.onReachEnd -= OnInTimelineReachEnd;
         hitManager.onHit -= OnInTimelineObstacleHit;
     }
 
@@ -144,6 +162,30 @@ public class GameLoop : MonoBehaviour
     void OnGameOverBottomExit()
     {
         Debug.Log("[GameLoop] : Exit Game Over Bottom");
+    }
+
+    void OnGlyphTableEnter()
+    {
+        Debug.Log("[GameLoop] : Enter Glyph Table");
+    }
+
+    void OnGlyphTableUpdate()
+    {
+        if(glyphTableManager.HasRightCombination())
+        {
+            nextState = EGameState.Congrats;
+            Debug.Log("Congrats");
+        }
+
+        if (glyphTableManager.HasMadeTooManyMistakes())
+        {
+            nextState = EGameState.GameOverBottom;
+        }
+    }
+
+    void OnGlyphTableExit()
+    {
+        Debug.Log("[GameLoop] : Exit Glyph Table");
     }
 
     private void Update()
