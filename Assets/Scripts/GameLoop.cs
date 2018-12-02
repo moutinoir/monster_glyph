@@ -10,6 +10,7 @@ public class GameLoop : MonoBehaviour
     public HitManager hitManager;
     public FallInHoleManager fallInHoleManager;
     public RunningTrackManager runningTrackManager;
+    public AudioSource audio;
 
     delegate void StateAction();
 
@@ -46,6 +47,10 @@ public class GameLoop : MonoBehaviour
     
     void OnPreparationEnter()
     {
+        if(audio.isPlaying)
+        {
+            audio.Stop();
+        }
         fallInHoleManager.DisplayFloorHideHole();
         inputManager.onTrigger += OnPreparationTrigger;
         Debug.Log("[GameLoop] : Enter Preparation");
@@ -69,6 +74,7 @@ public class GameLoop : MonoBehaviour
 
     void OnInTimelineEnter()
     {
+        audio.Play();
         runningTrackManager.gameObject.SetActive(true);
         timelineController.StartTimelineAndActivate();
         hitManager.onHit += OnInTimelineObstacleHit;
@@ -124,6 +130,7 @@ public class GameLoop : MonoBehaviour
 
     void OnGameOverBottomTrigger()
     {
+        runningTrackManager.Reset();
         runningTrackManager.gameObject.SetActive(true);
         nextState = EGameState.Preparation;
         inputManager.onTrigger -= OnGameOverBottomTrigger;
