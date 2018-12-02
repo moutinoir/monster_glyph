@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37312242, g: 0.3807421, b: 0.35872674, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1151,6 +1151,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114871528163414174, guid: 24eed4a74d8c8fc439f0c88f75bf75ac,
+        type: 2}
+      propertyPath: tableOffsetFromFinalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24eed4a74d8c8fc439f0c88f75bf75ac, type: 2}
   m_IsPrefabAsset: 0
@@ -1370,8 +1375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combinationLength: 3
-  pushnb: 0
-  push: 0
   numberOfButtons: 16
   textureGridCols: 4
   textureGridRows: 4
@@ -1382,6 +1385,10 @@ MonoBehaviour:
     type: 2}
   glyphButtonScale: {x: 0.4, y: 0.3, z: 1}
   tableOffsetFromFinalPosition: {x: 0, y: 0, z: 1}
+  buttons: []
+  restart: 0
+  pushnb: 0
+  push: 0
 --- !u!4 &1859665890
 Transform:
   m_ObjectHideFlags: 0
