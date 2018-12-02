@@ -52,9 +52,10 @@ public class GlyphTable : MonoBehaviour {
     public bool HasMadeTooManyMistakes()
     {
         bool atLeastOneIsWrong = false;
-        foreach (int expectedGlyphIndex in combination)
+        for (int i = 0; i < pushedButtons.Length; i++)
         {
-            if (!pushedButtons[expectedGlyphIndex])
+            bool isPressed = pushedButtons[i];
+            if (isPressed && !combination.Contains(i))
             {
                 atLeastOneIsWrong = true;
             }
