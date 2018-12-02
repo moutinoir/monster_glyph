@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [ExecuteInEditMode]
 public class CubeSequence : MonoBehaviour {
+
+    public List<GlyphTimelinePlaceholder> allSequencePlaceholders;
+    public List<GridBlock> allBlocks;
 
     public float sequenceLength;
 
@@ -23,7 +27,17 @@ public class CubeSequence : MonoBehaviour {
         }
     }
 
-	void Start () {
+    void PollPlaceholders()
+    {
+        allSequencePlaceholders = GetComponentsInChildren<GlyphTimelinePlaceholder>().ToList<GlyphTimelinePlaceholder>();
+    }
+
+    void PollBlocks()
+    {
+        allBlocks = GetComponentsInChildren<GridBlock>().ToList<GridBlock>();
+    }
+
+    void Start () {
 		
 	}
 	
@@ -32,6 +46,8 @@ public class CubeSequence : MonoBehaviour {
         if (Application.isEditor)
         {
             RecalcLength();
+            PollPlaceholders();
+            PollBlocks();
         }
 
 	}
