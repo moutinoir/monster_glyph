@@ -20,11 +20,22 @@ public class HitManager : MonoBehaviour
     public delegate void OnHit();
     public OnHit onHit;
 
+    public delegate void OnTilePush(TableGlyph tile);
+    public OnTilePush onTilePush;
+
     public void OnObstacleHit()
     {
         if(onHit != null)
         {
             onHit();
+        }
+    }
+
+    public void OnPushTile(TableGlyph tile)
+    {
+        if(onTilePush != null)
+        {
+            onTilePush(tile);
         }
     }
 }

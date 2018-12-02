@@ -169,6 +169,7 @@ public class GameLoop : MonoBehaviour
     void OnGlyphTableEnter()
     {
         Debug.Log("[GameLoop] : Enter Glyph Table");
+        hitManager.onTilePush += glyphTableManager.OnTilePush;
     }
 
     void OnGlyphTableUpdate()
@@ -186,6 +187,7 @@ public class GameLoop : MonoBehaviour
 
     void OnGlyphTableExit()
     {
+        hitManager.onTilePush -= glyphTableManager.OnTilePush;
         Debug.Log("[GameLoop] : Exit Glyph Table");
     }
 
