@@ -11,7 +11,18 @@ public class RunningTrackManager : MonoBehaviour
     Player player;
     BlocksRoot currentBlocks;
 
+    public void Reset()
+    {
+        timelinePercentage = 0;
+        SetPlayerAndBlocksPosition();
+    }
+
     private void Update()
+    {
+        SetPlayerAndBlocksPosition();
+    }
+
+    public void SetPlayerAndBlocksPosition()
     {
         if(currentBlocks != null && currentTemple != null && player != null)
         {
