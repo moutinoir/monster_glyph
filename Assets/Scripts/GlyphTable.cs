@@ -51,8 +51,48 @@ public class GlyphTable : MonoBehaviour {
 
     public bool HasMadeTooManyMistakes()
     {
-        // TODO
-        return false;
+        bool atLeastOneIsWrong = false;
+        foreach (int expectedGlyphIndex in combination)
+        {
+            if (!pushedButtons[expectedGlyphIndex])
+            {
+                atLeastOneIsWrong = true;
+            }
+        }
+        return atLeastOneIsWrong;
+    }
+
+    // the combination to press is expressed in BUTTON INDEX on the table
+    // at the beginning of each game we randomize which texture goes on which button
+    // but the combination 0,1,2,3 for example means you have to press the 4 buttons on top of the table, no matter what textures are on it
+    // the game is smart and knows which textures should be displayed in the timeline depending on what says the table
+    List<int> buttonToTextureMapping;
+
+    void RandomizeTexturesIndex()
+    {
+        buttonToTextureMapping = new List<int>();
+        for (int i = 0; i < buttonToTextureMapping.Count; i++)
+        {
+            buttonToTextureMapping[i] = i;
+        }
+        for (int i = 0; i < buttonToTextureMapping.Count; i++)
+        {
+            int temp = buttonToTextureMapping[i];
+            int randomIndex = Random.Range(0, buttonToTextureMapping.Count);
+            buttonToTextureMapping[i] = buttonToTextureMapping[randomIndex];
+            buttonToTextureMapping[randomIndex] = temp;
+        }
+        SetTextures();
+    }
+
+    void SetTextures()
+    {
+
+    }
+
+    public List<Texture> GetTexturesFromExpectedCombination()
+    {
+        return null;
     }
 
     public int pushnb;
@@ -78,10 +118,15 @@ public class GlyphTable : MonoBehaviour {
     
     TempleRoot temple;
 
+    public List<TableGlyph> buttons;
+
     bool placed = false;
 
     void SpawnAnimations()
     {
+
+        buttons = new List<TableGlyph>();
+
         if (model != null)
         {
             // take first N children
@@ -91,8 +136,9 @@ public class GlyphTable : MonoBehaviour {
             for (int i = 0; i < numberOfButtons; i++)
             {
                 GameObject button = model.transform.GetChild(0).gameObject;
-                GameObject childButton = Instantiate(glyphButtonPrefab.gameObject, button.transform);
-                childButton.transform.localScale = glyphButtonScale;
+                buttons.Add(Instantiate<TableGlyph>(glyphButtonPrefab, button.transform));
+                buttons[i].transform.localScale = glyphButtonScale;
+                buttons[i].number = i;
                 GameObject animatedParent = new GameObject("button " + i + " anim root");
                 animatedParent.transform.parent = model.transform;
                 animatedParent.transform.localPosition = new Vector3(0, 0, 0.1f);

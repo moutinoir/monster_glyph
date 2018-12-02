@@ -8,7 +8,6 @@ public class TableGlyph : MonoBehaviour {
 
     public List<Texture> textures;
 
-    [Header("Editor debug only:")]
     public int number;
 
     public void SetTextureNumber(int n)
