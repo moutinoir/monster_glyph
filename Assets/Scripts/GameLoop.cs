@@ -9,6 +9,7 @@ public class GameLoop : MonoBehaviour
     public TimelineController timelineController;
     public HitManager hitManager;
     public FallInHoleManager fallInHoleManager;
+    public RunningTrackManager runningTrackManager;
 
     delegate void StateAction();
 
@@ -25,6 +26,7 @@ public class GameLoop : MonoBehaviour
         Preparation = 0,
         InTimeline = 1,
         FallInHole = 2,
+        GameOverBottom = 3,
     }
 
     SGameState[] states;
@@ -38,6 +40,7 @@ public class GameLoop : MonoBehaviour
                 new SGameState() {onEnter =  OnPreparationEnter, onUpdate = OnPreparationUpdate, onExit = OnPreparationExit},
                 new SGameState() {onEnter =  OnInTimelineEnter, onUpdate = OnInTimelineUpdate, onExit = OnInTimelineExit},
                 new SGameState() {onEnter =  OnFallInHoleEnter, onUpdate = OnFallInHoleUpdate, onExit = OnFallInHoleExit},
+                new SGameState() {onEnter =  OnGameOverBottomEnter, onUpdate = OnGameOverBottomUpdate, onExit = OnGameOverBottomExit},
         };
     }
     
@@ -66,6 +69,7 @@ public class GameLoop : MonoBehaviour
 
     void OnInTimelineEnter()
     {
+        runningTrackManager.gameObject.SetActive(true);
         timelineController.StartTimelineAndActivate();
         hitManager.onHit += OnInTimelineObstacleHit;
         Debug.Log("[GameLoop] : Enter In Timeline");
@@ -73,6 +77,7 @@ public class GameLoop : MonoBehaviour
 
     void OnInTimelineObstacleHit()
     {
+        runningTrackManager.gameObject.SetActive(false);
         nextState = EGameState.FallInHole;
         hitManager.onHit -= OnInTimelineObstacleHit;
     }
@@ -92,16 +97,46 @@ public class GameLoop : MonoBehaviour
     {
         Debug.Log("[GameLoop] : Enter Fall In Hole");
         fallInHoleManager.MoveHoleDisableFloor();
+        fallInHoleManager.onHitBottom += OnFallInHoleHitBottom;
+    }
+
+    void OnFallInHoleHitBottom()
+    {
+        nextState = EGameState.GameOverBottom;
+        fallInHoleManager.onHitBottom -= OnFallInHoleHitBottom;
     }
 
     void OnFallInHoleUpdate()
     {
-
+        fallInHoleManager.FallUpdate();
     }
 
     void OnFallInHoleExit()
     {
         Debug.Log("[GameLoop] : Exit Fall In Hole");
+    }
+
+    void OnGameOverBottomEnter()
+    {
+        Debug.Log("[GameLoop] : Enter Game Over Bottom");
+        inputManager.onTrigger += OnGameOverBottomTrigger;
+    }
+
+    void OnGameOverBottomTrigger()
+    {
+        runningTrackManager.gameObject.SetActive(true);
+        nextState = EGameState.Preparation;
+        inputManager.onTrigger -= OnGameOverBottomTrigger;
+    }
+
+    void OnGameOverBottomUpdate()
+    {
+
+    }
+
+    void OnGameOverBottomExit()
+    {
+        Debug.Log("[GameLoop] : Exit Game Over Bottom");
     }
 
     private void Update()

@@ -144,6 +144,7 @@ MonoBehaviour:
   timelineController: {fileID: 1646100968}
   hitManager: {fileID: 1223646308}
   fallInHoleManager: {fileID: 1486509814}
+  runningTrackManager: {fileID: 2024888676}
   currentState: 100
   nextState: 0
 --- !u!4 &391270160
@@ -403,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc55ebc105dffc14883a900246153f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallDuration: 2
 --- !u!1 &1646100965
 GameObject:
   m_ObjectHideFlags: 0
