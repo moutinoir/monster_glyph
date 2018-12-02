@@ -5,6 +5,8 @@ using System.Linq;
 
 public class GlyphTable : MonoBehaviour {
 
+    public BlocksRoot currentBlocksRoot;
+
     public int combinationLength = 4;
 
     public HashSet<int> combination;
@@ -107,7 +109,12 @@ public class GlyphTable : MonoBehaviour {
 
     public List<Texture> GetTexturesFromExpectedCombination()
     {
-        return null;
+        List<Texture> toReturn = new List<Texture>();
+        for (int i = 0; i < combination.Count; i++)
+        {
+            toReturn.Add(glyphButtonPrefab.textures[buttonToTextureMapping[combination.ElementAt(i)]]);
+        }
+        return toReturn;
     }
 
     bool[] pushedButtons;
@@ -133,6 +140,10 @@ public class GlyphTable : MonoBehaviour {
     public List<TableGlyph> buttons;
 
     bool placed = false;
+
+    bool glyphsSpawnedIntimeline;
+
+    public int showEachGlyphNTimes = 2;
 
     [HeaderAttribute("Debug")]
     public bool restart;
@@ -199,11 +210,26 @@ public class GlyphTable : MonoBehaviour {
 
     }
 
+    void DeleteAllGlyphsIntimeline()
+    {
+        glyphsSpawnedIntimeline = false;
+    }
+
+    void SpawnGlyphsInTimeline()
+    {
+        List<Texture> theGlyphs = GetTexturesFromExpectedCombination();
+        //showEachGlyphNTimes
+        //currentBlocksRoot
+        glyphsSpawnedIntimeline = true;
+    }
+
     public void OnRestartLevel()
     {
+        DeleteAllGlyphsIntimeline();
         ResetAnimationsAndButtonsStates();
         RandomizeCombination();
         RandomizeTexturesIndex();
+        SpawnGlyphsInTimeline();
     }
 
     void Start () {
@@ -222,6 +248,11 @@ public class GlyphTable : MonoBehaviour {
     }
 		
 	void Update () {
+
+        if (currentBlocksRoot == null)
+        {
+            currentBlocksRoot = FindObjectOfType<BlocksRoot>();
+        }
 
         if (!placed)
         {
