@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4396061221328472}
   - component: {fileID: 33310665784076544}
   - component: {fileID: 23767020674945510}
-  - component: {fileID: 65145541159501566}
+  - component: {fileID: 64949541305067866}
   m_Layer: 10
   m_Name: Quad
   m_TagString: Untagged
@@ -143,18 +143,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1040702950982768}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65145541159501566
-BoxCollider:
+--- !u!64 &64949541305067866
+MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1040702950982768}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1.0000002, z: 0.06}
-  m_Center: {x: -0.0000076293945, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114662047984846552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,31 +170,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quad: {fileID: 23767020674945510}
   textures:
-  - {fileID: 2800000, guid: a63c2ce772efafb45b4dfbc7fe46d85f, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2800000, guid: 4c9680da8a70c3c4b85ec4241bf60205, type: 3}
+  - {fileID: 2800000, guid: 4395122d99fcf224abbb4709f4c8c34b, type: 3}
+  - {fileID: 2800000, guid: c405f445a6fc2874fa87c1a2b6f19e88, type: 3}
+  - {fileID: 2800000, guid: 6abc20ac13d626b4eaeb1998819cd6f5, type: 3}
+  - {fileID: 2800000, guid: a719ab0adef7c4f4ab77713dda47d64e, type: 3}
+  - {fileID: 2800000, guid: 2f6a9ec70df71204b94f28d0cb40ca81, type: 3}
+  - {fileID: 2800000, guid: 672b616868dd9ce49a68f23e31a71a7a, type: 3}
+  - {fileID: 2800000, guid: 41a8e5a967c6c6d4e80ce2a509254676, type: 3}
+  - {fileID: 2800000, guid: e883c29589fb0df4da64ccf9a8ea7873, type: 3}
+  - {fileID: 2800000, guid: e99181a8d4d15644a9c25c73072eda1d, type: 3}
+  - {fileID: 2800000, guid: ce97d63bf09def84eafe120ea06cc29a, type: 3}
+  - {fileID: 2800000, guid: e14bb24ad9bdd414880c33f640452249, type: 3}
+  - {fileID: 2800000, guid: 05a4c1d91edd15b4db7ab701ab8ac613, type: 3}
+  - {fileID: 2800000, guid: 00dbfe87ca30c8d40812d389bfd66e94, type: 3}
+  - {fileID: 2800000, guid: 7bb89e38e82f41b45b616ab77ea70df0, type: 3}
+  - {fileID: 2800000, guid: 0c29403103465d0439b31e072c078901, type: 3}
+  - {fileID: 2800000, guid: 729b98cfb0a7dfa41aac70b41187214a, type: 3}
+  - {fileID: 2800000, guid: dba877f4df9cbee40a5f8b722e24b0ce, type: 3}
+  - {fileID: 2800000, guid: 7749f48476ff9eb4398f12129f7bc8de, type: 3}
+  - {fileID: 2800000, guid: df7828a969fd9bc44b11d779b36df52f, type: 3}
+  - {fileID: 2800000, guid: 26e9b007a9bc2c549bcab3b40726be93, type: 3}
+  - {fileID: 2800000, guid: 74dca640d5868c346b597558ac44f198, type: 3}
+  - {fileID: 2800000, guid: d83adafd2b747d6409f474aeebf1020b, type: 3}
+  - {fileID: 2800000, guid: a02b8e24964f53b479e980b14fbebc3d, type: 3}
+  - {fileID: 2800000, guid: 79ca36d51a89c6f488597481ec5292c5, type: 3}
+  - {fileID: 2800000, guid: 61431632622823f4da88204b20b5ce5c, type: 3}
   number: 0
   textureIndex: 0
