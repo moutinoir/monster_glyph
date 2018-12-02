@@ -40,6 +40,7 @@ public class GameLoop : MonoBehaviour
                 new SGameState() {onEnter =  OnPreparationEnter, onUpdate = OnPreparationUpdate, onExit = OnPreparationExit},
                 new SGameState() {onEnter =  OnInTimelineEnter, onUpdate = OnInTimelineUpdate, onExit = OnInTimelineExit},
                 new SGameState() {onEnter =  OnFallInHoleEnter, onUpdate = OnFallInHoleUpdate, onExit = OnFallInHoleExit},
+                new SGameState() {onEnter =  OnGameOverBottomEnter, onUpdate = OnGameOverBottomUpdate, onExit = OnGameOverBottomExit},
         };
     }
     
@@ -113,6 +114,29 @@ public class GameLoop : MonoBehaviour
     void OnFallInHoleExit()
     {
         Debug.Log("[GameLoop] : Exit Fall In Hole");
+    }
+
+    void OnGameOverBottomEnter()
+    {
+        Debug.Log("[GameLoop] : Enter Game Over Bottom");
+        inputManager.onTrigger += OnGameOverBottomTrigger;
+    }
+
+    void OnGameOverBottomTrigger()
+    {
+        runningTrackManager.gameObject.SetActive(true);
+        nextState = EGameState.Preparation;
+        inputManager.onTrigger -= OnGameOverBottomTrigger;
+    }
+
+    void OnGameOverBottomUpdate()
+    {
+
+    }
+
+    void OnGameOverBottomExit()
+    {
+        Debug.Log("[GameLoop] : Exit Game Over Bottom");
     }
 
     private void Update()
