@@ -47,6 +47,8 @@ public class GameLoop : MonoBehaviour
                 new SGameState() {onEnter =  OnInTimelineEnter, onUpdate = OnInTimelineUpdate, onExit = OnInTimelineExit},
                 new SGameState() {onEnter =  OnFallInHoleEnter, onUpdate = OnFallInHoleUpdate, onExit = OnFallInHoleExit},
                 new SGameState() {onEnter =  OnGameOverBottomEnter, onUpdate = OnGameOverBottomUpdate, onExit = OnGameOverBottomExit},
+                new SGameState() {onEnter =  OnGlyphTableEnter, onUpdate = OnGlyphTableUpdate, onExit = OnGlyphTableExit},
+                new SGameState() {onEnter =  OnCongratsEnter, onUpdate = OnCongratsUpdate, onExit = OnCongratsExit},
         };
     }
     
@@ -174,7 +176,6 @@ public class GameLoop : MonoBehaviour
         if(glyphTableManager.HasRightCombination())
         {
             nextState = EGameState.Congrats;
-            Debug.Log("Congrats");
         }
 
         if (glyphTableManager.HasMadeTooManyMistakes())
@@ -186,6 +187,28 @@ public class GameLoop : MonoBehaviour
     void OnGlyphTableExit()
     {
         Debug.Log("[GameLoop] : Exit Glyph Table");
+    }
+
+    void OnCongratsEnter()
+    {
+        Debug.Log("[GameLoop] : Enter Congrats");
+        inputManager.onTrigger += OnCongratsTrigger;
+    }
+
+    void OnCongratsUpdate()
+    {
+
+    }
+
+    void OnCongratsTrigger()
+    {
+        nextState = EGameState.Preparation;
+        inputManager.onTrigger -= OnCongratsTrigger;
+    }
+
+    void OnCongratsExit()
+    {
+        Debug.Log("[GameLoop] : Exit Congrats");
     }
 
     private void Update()
