@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: 29806c0822cc3404c8415cacab5edc0d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: statue
+    100002: temple3.002
+    100004: temple4.002
+    100006: temple4.003
+    100008: temple4.004
+    100010: //RootNode
+    400000: statue
+    400002: temple3.002
+    400004: temple4.002
+    400006: temple4.003
+    400008: temple4.004
+    400010: //RootNode
+    2100000: wall_art
+    2100002: wall_painting2
+    2100004: wall_painting1
+    2100006: santstone
+    2100008: black granit
+    2300000: statue
+    2300002: temple3.002
+    2300004: temple4.002
+    2300006: temple4.003
+    2300008: temple4.004
+    3300000: statue
+    3300002: temple3.002
+    3300004: temple4.002
+    3300006: temple4.003
+    3300008: temple4.004
+    4300000: temple3.002
+    4300002: temple4.004
+    4300004: temple4.003
+    4300006: temple4.002
+    4300008: statue
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black granit
+    second: {fileID: 2100000, guid: d6464d23351b99d4682dfe89927a16fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: santstone
+    second: {fileID: 2100000, guid: 4fdc18aba3ca4964a83f6db2c2a3aef6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_art
+    second: {fileID: 2100000, guid: 848d24f7edf5a7c49ba2f20b76cd141a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_painting1
+    second: {fileID: 2100000, guid: 82ff10e0b4dccb249979b328fabeca5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_painting2
+    second: {fileID: 2100000, guid: db40f8ccb3a2a8944ab7262feb29eaa0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

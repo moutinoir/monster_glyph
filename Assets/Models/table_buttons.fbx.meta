@@ -21,6 +21,8 @@ ModelImporter:
     100030: button9
     100032: table.001
     100034: //RootNode
+    100036: button1
+    100038: table
     400000: button1.001
     400002: button10
     400004: button11
@@ -39,7 +41,11 @@ ModelImporter:
     400030: button9
     400032: table.001
     400034: //RootNode
+    400036: button1
+    400038: table
     2100000: No Name
+    2100002: buttons
+    2100004: table
     2300000: button1.001
     2300002: button10
     2300004: button11
@@ -57,6 +63,8 @@ ModelImporter:
     2300028: button8
     2300030: button9
     2300032: table.001
+    2300034: button1
+    2300036: table
     3300000: button1.001
     3300002: button10
     3300004: button11
@@ -74,6 +82,8 @@ ModelImporter:
     3300028: button8
     3300030: button9
     3300032: table.001
+    3300034: button1
+    3300036: table
     4300000: table.001
     4300002: button8
     4300004: button4
@@ -91,7 +101,19 @@ ModelImporter:
     4300028: button5
     4300030: button16
     4300032: button12
-  externalObjects: {}
+    4300034: table
+    4300036: button1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: buttons
+    second: {fileID: 2100000, guid: 3caf96944aa5c984ab30b6a5cec1b30b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: table
+    second: {fileID: 2100000, guid: 98836955a58ded847af6c7ce0ecffdf1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
