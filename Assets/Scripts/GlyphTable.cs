@@ -47,6 +47,8 @@ public class GlyphTable : MonoBehaviour {
         return noButtonsAreMissing;
     }
 
+    int numberOfAllowedMistakes;
+
     public bool HasMadeTooManyMistakes()
     {
         // TODO
@@ -68,6 +70,10 @@ public class GlyphTable : MonoBehaviour {
 
     public GlyphTableModel model;
 
+    public TableGlyph glyphButtonPrefab;
+
+    public Vector3 glyphButtonScale = new Vector3(0.4f,0.3f,1);
+
     public Vector3 tableOffsetFromFinalPosition;
     
     TempleRoot temple;
@@ -84,8 +90,16 @@ public class GlyphTable : MonoBehaviour {
             //for (int i = 0; i < model.transform.childCount; i++)
             for (int i = 0; i < numberOfButtons; i++)
             {
-                GameObject button = model.transform.GetChild(i).gameObject;
-                button.AddComponent<Animator>();
+                GameObject button = model.transform.GetChild(0).gameObject;
+                GameObject childButton = Instantiate(glyphButtonPrefab.gameObject, button.transform);
+                childButton.transform.localScale = glyphButtonScale;
+                GameObject animatedParent = new GameObject("button " + i + " anim root");
+                animatedParent.transform.parent = model.transform;
+                animatedParent.transform.localPosition = new Vector3(0, 0, 0.1f);
+                animatedParent.transform.localEulerAngles = Vector3.zero;
+                animatedParent.transform.localScale = Vector3.one;
+                button.transform.parent = animatedParent.transform;
+                animatedParent.AddComponent<Animator>();
                 //button.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Assets/Resources/" + buttonPushAnimationName + ".controller") as RuntimeAnimatorController;
             }
 
@@ -96,7 +110,7 @@ public class GlyphTable : MonoBehaviour {
     {
         if (model != null)
         {
-            if (i > 0 && i < numberOfButtons)
+            if (i >= 0 && i < numberOfButtons)
             {
                 if (pushedButtons[i])
                 {
