@@ -146,6 +146,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: columns1
+    second: {fileID: 2100000, guid: 5d4682a5851d82c458cb61e39f948ac2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: pathway
     second: {fileID: 2100000, guid: 46135f710bd13e1409a0e1f2d9f87c87, type: 2}
   - first:
