@@ -10,7 +10,7 @@ public class HitDetection : MonoBehaviour
     private void Start()
     {
         damagePlayerLayer = LayerMask.NameToLayer("DamagePlayer");
-        glyphTableTileLayer = LayerMask.NameToLayer("GlyphTableTileLayer");
+        glyphTableTileLayer = LayerMask.NameToLayer("GlyphTableTile");
     }
 
     void OnTriggerEnter(Collider objectHit)

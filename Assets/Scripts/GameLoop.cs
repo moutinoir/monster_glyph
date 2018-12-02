@@ -61,6 +61,7 @@ public class GameLoop : MonoBehaviour
         fallInHoleManager.DisplayFloorHideHole();
         inputManager.onTrigger += OnPreparationTrigger;
         Debug.Log("[GameLoop] : Enter Preparation");
+        glyphTableManager.ResetGlyphTable();
     }
 
     void OnPreparationTrigger()
