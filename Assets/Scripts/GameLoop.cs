@@ -61,6 +61,7 @@ public class GameLoop : MonoBehaviour
         fallInHoleManager.DisplayFloorHideHole();
         inputManager.onTrigger += OnPreparationTrigger;
         Debug.Log("[GameLoop] : Enter Preparation");
+        glyphTableManager.ResetGlyphTable();
     }
 
     void OnPreparationTrigger()
@@ -169,6 +170,7 @@ public class GameLoop : MonoBehaviour
     void OnGlyphTableEnter()
     {
         Debug.Log("[GameLoop] : Enter Glyph Table");
+        hitManager.onTilePush += glyphTableManager.OnTilePush;
     }
 
     void OnGlyphTableUpdate()
@@ -180,12 +182,13 @@ public class GameLoop : MonoBehaviour
 
         if (glyphTableManager.HasMadeTooManyMistakes())
         {
-            nextState = EGameState.GameOverBottom;
+            nextState = EGameState.FallInHole;
         }
     }
 
     void OnGlyphTableExit()
     {
+        hitManager.onTilePush -= glyphTableManager.OnTilePush;
         Debug.Log("[GameLoop] : Exit Glyph Table");
     }
 

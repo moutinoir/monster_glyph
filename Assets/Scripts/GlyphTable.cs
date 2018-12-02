@@ -190,7 +190,7 @@ public class GlyphTable : MonoBehaviour {
         }
     }
 
-    void PushButton(int i)
+    public void PushButton(int i)
     {
         if (model != null)
         {
