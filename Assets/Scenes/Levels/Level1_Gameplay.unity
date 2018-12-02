@@ -147,7 +147,7 @@ MonoBehaviour:
   runningTrackManager: {fileID: 2024888676}
   audioSource: {fileID: 798258937}
   glyphTableManager: {fileID: 1984012701}
-  invincible: 0
+  invincible: 1
   currentState: 100
   nextState: 0
 --- !u!4 &391270160
