@@ -11,6 +11,8 @@ ModelImporter:
     100010: Cube.004
     100012: Light
     100014: //RootNode
+    100016: Point
+    100018: Point.001
     400000: Camera
     400002: Cube
     400004: Cube.001
@@ -19,6 +21,8 @@ ModelImporter:
     400010: Cube.004
     400012: Light
     400014: //RootNode
+    400016: Point
+    400018: Point.001
     2000000: Camera
     2100000: Material
     2100002: No Name
@@ -39,6 +43,8 @@ ModelImporter:
     4300006: Cube.003
     4300008: Cube.004
     10800000: Light
+    10800002: Point
+    10800004: Point.001
   externalObjects: {}
   materials:
     importMaterials: 1
