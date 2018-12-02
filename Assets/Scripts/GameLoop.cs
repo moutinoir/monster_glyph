@@ -10,6 +10,10 @@ public class GameLoop : MonoBehaviour
     public HitManager hitManager;
     public FallInHoleManager fallInHoleManager;
     public RunningTrackManager runningTrackManager;
+    public AudioSource audioSource;
+    public GlyphTableManager glyphTableManager;
+
+    public bool invincible;
 
     delegate void StateAction();
 
@@ -27,6 +31,8 @@ public class GameLoop : MonoBehaviour
         InTimeline = 1,
         FallInHole = 2,
         GameOverBottom = 3,
+        GlyphTable = 4,
+        Congrats = 5,
     }
 
     SGameState[] states;
@@ -41,11 +47,17 @@ public class GameLoop : MonoBehaviour
                 new SGameState() {onEnter =  OnInTimelineEnter, onUpdate = OnInTimelineUpdate, onExit = OnInTimelineExit},
                 new SGameState() {onEnter =  OnFallInHoleEnter, onUpdate = OnFallInHoleUpdate, onExit = OnFallInHoleExit},
                 new SGameState() {onEnter =  OnGameOverBottomEnter, onUpdate = OnGameOverBottomUpdate, onExit = OnGameOverBottomExit},
+                new SGameState() {onEnter =  OnGlyphTableEnter, onUpdate = OnGlyphTableUpdate, onExit = OnGlyphTableExit},
+                new SGameState() {onEnter =  OnCongratsEnter, onUpdate = OnCongratsUpdate, onExit = OnCongratsExit},
         };
     }
     
     void OnPreparationEnter()
     {
+        if(audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
         fallInHoleManager.DisplayFloorHideHole();
         inputManager.onTrigger += OnPreparationTrigger;
         Debug.Log("[GameLoop] : Enter Preparation");
@@ -69,16 +81,30 @@ public class GameLoop : MonoBehaviour
 
     void OnInTimelineEnter()
     {
+        audioSource.Play();
         runningTrackManager.gameObject.SetActive(true);
         timelineController.StartTimelineAndActivate();
         hitManager.onHit += OnInTimelineObstacleHit;
+        runningTrackManager.onReachEnd += OnInTimelineReachEnd;
         Debug.Log("[GameLoop] : Enter In Timeline");
     }
 
     void OnInTimelineObstacleHit()
     {
+        if (invincible)
+            return;
+
         runningTrackManager.gameObject.SetActive(false);
         nextState = EGameState.FallInHole;
+        hitManager.onHit -= OnInTimelineObstacleHit;
+        runningTrackManager.onReachEnd -= OnInTimelineReachEnd;
+    }
+
+    void OnInTimelineReachEnd()
+    {
+        nextState = EGameState.GlyphTable;
+
+        runningTrackManager.onReachEnd -= OnInTimelineReachEnd;
         hitManager.onHit -= OnInTimelineObstacleHit;
     }
 
@@ -124,6 +150,7 @@ public class GameLoop : MonoBehaviour
 
     void OnGameOverBottomTrigger()
     {
+        runningTrackManager.Reset();
         runningTrackManager.gameObject.SetActive(true);
         nextState = EGameState.Preparation;
         inputManager.onTrigger -= OnGameOverBottomTrigger;
@@ -137,6 +164,51 @@ public class GameLoop : MonoBehaviour
     void OnGameOverBottomExit()
     {
         Debug.Log("[GameLoop] : Exit Game Over Bottom");
+    }
+
+    void OnGlyphTableEnter()
+    {
+        Debug.Log("[GameLoop] : Enter Glyph Table");
+    }
+
+    void OnGlyphTableUpdate()
+    {
+        if(glyphTableManager.HasRightCombination())
+        {
+            nextState = EGameState.Congrats;
+        }
+
+        if (glyphTableManager.HasMadeTooManyMistakes())
+        {
+            nextState = EGameState.GameOverBottom;
+        }
+    }
+
+    void OnGlyphTableExit()
+    {
+        Debug.Log("[GameLoop] : Exit Glyph Table");
+    }
+
+    void OnCongratsEnter()
+    {
+        Debug.Log("[GameLoop] : Enter Congrats");
+        inputManager.onTrigger += OnCongratsTrigger;
+    }
+
+    void OnCongratsUpdate()
+    {
+
+    }
+
+    void OnCongratsTrigger()
+    {
+        nextState = EGameState.Preparation;
+        inputManager.onTrigger -= OnCongratsTrigger;
+    }
+
+    void OnCongratsExit()
+    {
+        Debug.Log("[GameLoop] : Exit Congrats");
     }
 
     private void Update()
