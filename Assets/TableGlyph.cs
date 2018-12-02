@@ -8,20 +8,28 @@ public class TableGlyph : MonoBehaviour {
 
     public List<Texture> textures;
 
-    [Header("Editor debug only:")]
+    [Header("Button number (physical layout)")]
     public int number;
 
-    public void SetTextureNumber(int n)
+    [Header("Texture index (which symbol)")]
+    public int textureIndex;
+
+    void SetTexture(int n)
     {
         quad.material.mainTexture = textures[n];
     }
 
+    public void UpdateTexture()
+    {
+        SetTexture(textureIndex);
+    }
+
     void Start()
     {
-        if (Application.isEditor)
-        {
-            SetTextureNumber(number);
-        }
+        //if (Application.isEditor)
+        //{
+        //    SetTextureNumber(number);
+        //}
     }
 
 }

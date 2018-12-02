@@ -51,12 +51,64 @@ public class GlyphTable : MonoBehaviour {
 
     public bool HasMadeTooManyMistakes()
     {
-        // TODO
-        return false;
+        bool atLeastOneIsWrong = false;
+        for (int i = 0; i < pushedButtons.Length; i++)
+        {
+            bool isPressed = pushedButtons[i];
+            if (isPressed && !combination.Contains(i))
+            {
+                atLeastOneIsWrong = true;
+            }
+        }
+        return atLeastOneIsWrong;
     }
 
-    public int pushnb;
-    public bool push;
+    // the combination to press is expressed in BUTTON INDEX on the table
+    // at the beginning of each game we randomize which texture goes on which button
+    // but the combination 0,1,2,3 for example means you have to press the 4 buttons on top of the table, no matter what textures are on it
+    // the game is smart and knows which textures should be displayed in the timeline depending on what says the table
+    // the indices of this table are the buttons numbers (physical layout) and the values are the texture indices (which symbol)
+    List<int> buttonToTextureMapping;
+
+    void InitTextureMapping()
+    {
+        buttonToTextureMapping = new List<int>();
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttonToTextureMapping.Add(i);
+        }
+    }
+
+    void RandomizeTexturesIndex()
+    {
+        InitTextureMapping();
+        for (int i = 0; i < buttonToTextureMapping.Count; i++)
+        {
+            int temp = buttonToTextureMapping[i];
+            int randomIndex = Random.Range(0, buttonToTextureMapping.Count);
+            buttonToTextureMapping[i] = buttonToTextureMapping[randomIndex];
+            buttonToTextureMapping[randomIndex] = temp;
+        }
+        SetTextures();
+    }
+
+    void SetTextures()
+    {
+        if (buttons != null)
+        {
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                TableGlyph button = buttons[i];
+                button.textureIndex = buttonToTextureMapping[i];
+                button.UpdateTexture();
+            }
+        }
+    }
+
+    public List<Texture> GetTexturesFromExpectedCombination()
+    {
+        return null;
+    }
 
     bool[] pushedButtons;
 
@@ -78,10 +130,30 @@ public class GlyphTable : MonoBehaviour {
     
     TempleRoot temple;
 
+    public List<TableGlyph> buttons;
+
     bool placed = false;
+
+    [HeaderAttribute("Debug")]
+    public bool restart;
+    public int pushnb;
+    public bool push;
+
+    void ResetAnimationsAndButtonsStates()
+    {
+        for (int i = 0; i < numberOfButtons; i++)
+        {
+            //GameObject button = model.transform.GetChild(0).gameObject;
+            model.transform.GetChild(i).gameObject.GetComponent<Animator>().runtimeAnimatorController = null;
+            pushedButtons[i] = false;
+        }
+    }
 
     void SpawnAnimations()
     {
+
+        buttons = new List<TableGlyph>();
+
         if (model != null)
         {
             // take first N children
@@ -91,8 +163,9 @@ public class GlyphTable : MonoBehaviour {
             for (int i = 0; i < numberOfButtons; i++)
             {
                 GameObject button = model.transform.GetChild(0).gameObject;
-                GameObject childButton = Instantiate(glyphButtonPrefab.gameObject, button.transform);
-                childButton.transform.localScale = glyphButtonScale;
+                buttons.Add(Instantiate<TableGlyph>(glyphButtonPrefab, button.transform));
+                buttons[i].transform.localScale = glyphButtonScale;
+                buttons[i].number = i;
                 GameObject animatedParent = new GameObject("button " + i + " anim root");
                 animatedParent.transform.parent = model.transform;
                 animatedParent.transform.localPosition = new Vector3(0, 0, 0.1f);
@@ -126,13 +199,25 @@ public class GlyphTable : MonoBehaviour {
 
     }
 
-	void Start () {
+    public void OnRestartLevel()
+    {
+        ResetAnimationsAndButtonsStates();
+        RandomizeCombination();
+        RandomizeTexturesIndex();
+    }
+
+    void Start () {
 
         SpawnAnimations();
 
         pushedButtons = new bool[16];
 
         RandomizeCombination();
+
+        RandomizeTexturesIndex();
+
+        //InitTextureMapping();
+        //SetTextures();
 
     }
 		
@@ -164,7 +249,17 @@ public class GlyphTable : MonoBehaviour {
                 {
                     Debug.Log("YOU WIN");
                 }
+                if (HasMadeTooManyMistakes())
+                {
+                    Debug.Log("YOU LOOSE");
+                }
             }
+        }
+
+        if (restart)
+        {
+            restart = false;
+            OnRestartLevel();
         }
 
     }

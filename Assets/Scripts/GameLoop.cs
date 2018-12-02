@@ -182,7 +182,7 @@ public class GameLoop : MonoBehaviour
 
         if (glyphTableManager.HasMadeTooManyMistakes())
         {
-            nextState = EGameState.GameOverBottom;
+            nextState = EGameState.FallInHole;
         }
     }
 
