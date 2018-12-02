@@ -212,14 +212,20 @@ public class GlyphTable : MonoBehaviour {
 
     void DeleteAllGlyphsIntimeline()
     {
-        currentBlocksRoot.DestroyAllBlocks();
+        if (currentBlocksRoot != null)
+        {
+            currentBlocksRoot.DestroyAllBlocks();
+        }
         glyphsSpawnedIntimeline = false;
     }
 
     void SpawnGlyphsInTimeline()
     {
         List<Texture> theGlyphs = GetTexturesFromExpectedCombination();
-        currentBlocksRoot.SpawnLevel(theGlyphs, showEachGlyphNTimes);
+        if (currentBlocksRoot != null)
+        {
+            currentBlocksRoot.SpawnLevel(theGlyphs, showEachGlyphNTimes);
+        }
         glyphsSpawnedIntimeline = true;
     }
 
