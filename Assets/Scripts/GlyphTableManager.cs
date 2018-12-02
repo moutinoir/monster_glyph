@@ -25,4 +25,16 @@ public class GlyphTableManager : MonoBehaviour
         GetGlyphTable();
         return glyphTable.HasMadeTooManyMistakes();
     }
+
+    public void OnTilePush(TableGlyph tile)
+    {
+        GetGlyphTable();
+        glyphTable.PushButton(tile.number);
+    }
+
+    public void ResetGlyphTable()
+    {
+        GetGlyphTable();
+        glyphTable.OnRestartLevel();
+    }
 }
